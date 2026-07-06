@@ -1,0 +1,78 @@
+.quizGrid {
+  position: relative;
+  height: calc(100vh - var(--game-header-height));
+  width: 100%;
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.eightGrid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.eightGrid .quizCard h1 {
+  font-size: 8rem;
+}
+
+.sixteenGrid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.sixteenGrid .quizCard h1 {
+  font-size: 5rem;
+}
+
+.twentyFourGrid {
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.twentyFourGrid .quizCard h1 {
+  font-size: 5rem;
+}
+
+.quizCard {
+  height: auto;
+  width: auto;
+  background: var(--card-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.quizCard:hover {
+  background: var(--primary2);
+  scale: 1.05;
+}
+
+.quizCard h1 {
+  color: var(--primary2);
+}
+
+.quizCard:hover h1 {
+  color: var(--highlight);
+}
+
+.clickedCard {
+  background: var(--inactive-card);
+  cursor: default;
+}
+
+.clickedCard h1 {
+  color: grey;
+}
+
+.clickedCard:hover {
+  background: var(--inactive-card);
+  scale: none;
+}
+
+.clickedCard:hover h1 {
+  color: grey;
+}

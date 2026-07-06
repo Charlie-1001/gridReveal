@@ -1,0 +1,16 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--primary2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(70, 67, 67);
+  z-index: 1000;
+}
+
+.header h1 {
+  color: white;
+  font-size: 2.5rem;
+}

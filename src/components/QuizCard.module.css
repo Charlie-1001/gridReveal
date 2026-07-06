@@ -1,0 +1,71 @@
+.quizCard {
+  height: 250px;
+  width: 250px;
+  border: 2px solid rgb(129, 128, 128);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 5px rgb(151, 149, 149);
+  padding: 7px;
+}
+
+.quizCard:hover {
+  scale: 1.05;
+  box-shadow: 0 0 10px var(--primary2);
+  border: 2px solid var(--primary2);
+}
+
+.coverImg {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px 10px 0 0;
+}
+
+.coverImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardText {
+  height: 30%;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.cardText h1 {
+  font-size: 1.3rem;
+  text-align: center;
+  text-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.cardText p {
+  font-size: 0.8rem;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.cardInfo {
+  height: 20%;
+  width: 100%;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.grade, .questions, .plays {
+  width: 20%;
+  text-align: center;
+  overflow-x: auto;
+  text-wrap: nowrap;
+}
+
+.subject {
+  width: 40%;
+  overflow-x: auto;
+  text-wrap: nowrap;
+  text-align: center;
+}

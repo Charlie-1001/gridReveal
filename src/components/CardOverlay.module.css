@@ -1,0 +1,146 @@
+.fullScreenOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.658);
+}
+
+.quizOverlay {
+  position: absolute;
+  top: var(--game-header-height);
+  left: 50%;
+  transform: translate(-50%);
+  height: 80%;
+  width: 70%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 30px;
+  aspect-ratio: 1 / 1;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.closeBtn img {
+  height: 100%;
+}
+
+/* the upper part that inludes point, image, and question */
+.upperPart {
+  position: relative;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upperPart p {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary2);
+}
+
+.quizImg {
+  height: 60%;
+  aspect-ratio: 1.5 / 1;
+  margin-top: 25px;
+}
+
+.upperPart h1 {
+  height: 40%;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.lowerPart {
+  height: 36%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkBtn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  background-color: var(--primary2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.revealAnswer {
+  height: 100%;
+  width: 100%;
+}
+
+.revealAnswer p {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary2);
+}
+
+.btnGroup {
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.btnGroup button {
+  height: 2rem;
+  aspect-ratio: 2;
+  border: none;
+  border-radius: 10px;
+}
+
+.yesBtn {
+  background-color: var(--accent-green);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.noBtn {
+  background-color: var(--accent-red);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkBtn:hover, .yesBtn:hover, .noBtn:hover {
+  border: 2px solid rgb(63, 62, 62);
+  scale: 1.1;
+}
+
+.xDivLine {
+  width: 80%;
+  margin: 0.5rem auto;
+}

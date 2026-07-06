@@ -1,0 +1,59 @@
+.fullScreenOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.658);
+}
+
+.editNameOverlay {
+  position: absolute;
+  top: var(--game-header-height);
+  left: 50%;
+  transform: translate(-50%);
+  min-height: 45%;
+  width: 40%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.editNameOverlay label {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.editNameOverlay input {
+  height: 100%;
+  width: 50%;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+.editNameOverlay button {
+  width: fit-content;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  margin: auto;
+  cursor: pointer;
+  background-color: var(--primary2);
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.editNameOverlay button:hover {
+  border: 2px solid black;
+  padding: 0.4rem 1.5rem;
+}

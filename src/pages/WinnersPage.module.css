@@ -1,0 +1,71 @@
+.winnersPage {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, #FFFFFF 0%, #FFF3C4 50%, #FFDD56 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.winnerText {
+  margin: 1rem auto;
+  height: 10vh;
+}
+
+.winnerGroup {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.winner {
+  position: relative;
+  height: 30%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5rem 1rem 0rem 9rem;
+}
+
+.banner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.winnerData {
+  width: 100%;
+  height: 50%;
+  color: #0C0478;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.winnerData h1 {
+  font-size: 2.5rem;
+}
+
+.handshake {
+  height: 40px;
+  aspect-ratio: 1 / 1;
+}
+
+.winnerData h2 {
+  font-size: 1.5rem;
+}
+
+.starPoppers {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  inset: 0;
+}
