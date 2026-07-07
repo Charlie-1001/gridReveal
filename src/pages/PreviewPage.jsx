@@ -18,10 +18,8 @@ function PreviewLayout() {
   const totalQuizzes = game.totalQuizzes;
 
   function handlePlay() {
-    window.open(
-      `${import.meta.env.BASE_URL}gamePage/${id}?teams=${numOfTeams}&numOfQuizzes=${numOfQuizzes}`,
-      '_blank'
-    )
+    const gameUrl = `${import.meta.env.BASE_URL}#/gamePage/${id}?teams=${numOfTeams}&numOfQuizzes=${numOfQuizzes}`;
+    window.open(gameUrl, '_blank');
   }
 
   return (
