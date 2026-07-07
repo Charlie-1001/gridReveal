@@ -19,7 +19,7 @@ function PreviewLayout() {
 
   function handlePlay() {
     window.open(
-      `/gamePage/${id}?teams=${numOfTeams}&numOfQuizzes=${numOfQuizzes}`,
+      `${import.meta.env.BASE_URL}gamePage/${id}?teams=${numOfTeams}&numOfQuizzes=${numOfQuizzes}`,
       '_blank'
     )
   }
