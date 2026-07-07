@@ -12,7 +12,7 @@ function QuizCard({imageUrl, title, description, grade, subject, totalQs, totalP
       </div>
       <hr />
       <div className={styles.cardInfo}>
-        <span className={styles.grade}>G-{grade}</span>
+        <span className={styles.grade}>{grade === "KG" ? grade : `G-${grade}`}</span>
         <span className={styles.subject}>{subject}</span>
         <span className={styles.questions}>{`${totalQs}Qs`}</span>
         <span className={styles.plays}>{`▶️${totalPlays}`}</span>

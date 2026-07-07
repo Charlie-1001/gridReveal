@@ -31,7 +31,7 @@ function PreviewLayout() {
         <hr className={styles.xDivLine} />
 
         <div className={styles.quizInfo}>
-          <span className={styles.grade}>{`G-${game.grade}`}</span>
+          <span className={styles.grade}>{game.grade === "KG" ? game.grade : `G-${game.grade}`}</span>
           <span className={styles.subject}>{game.subject}</span>
           <span className={styles.totalQuiz}>{`${game.totalQuizzes}Qs`}</span>
           <span className={styles.totalPlays}>{`▶️${game.totalPlays}`}</span>
