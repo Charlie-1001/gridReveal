@@ -5,7 +5,7 @@ import { useContext, useState, useEffect, useRef, Fragment } from 'react';
 import { QuizContext } from '../contexts/QuizContext';
 
 function Teams({teamData, setTeamData, numOfTeams, numOfQuizzes }) {
-  const { score, cardType,teamChanges, clickedCard, currentTeamIndex, setCurrentTeamIndex, otherTeamIndex } = useContext(QuizContext);
+  const { score, cardType, funCardType, teamChanges, clickedCard, currentTeamIndex, setCurrentTeamIndex, otherTeamIndex } = useContext(QuizContext);
   const hasMounted = useRef(false);
 
   useEffect(() => {
@@ -14,11 +14,13 @@ function Teams({teamData, setTeamData, numOfTeams, numOfQuizzes }) {
       return;
     }
 
+    const targetTeamKey = `team${cardType === 'otherTeam' && numOfTeams > 1 ? otherTeamIndex : currentTeamIndex}`;
+
     setTeamData(prev => ({
       ...prev,
-      [`team${cardType === 'otherTeam' ? otherTeamIndex : currentTeamIndex}`]: {
-        ...prev[`team${cardType === 'otherTeam' ? otherTeamIndex : currentTeamIndex}`],
-        score: prev[`team${cardType === 'otherTeam' ? otherTeamIndex : currentTeamIndex}`].score + score,
+      [targetTeamKey]: {
+        ...prev[targetTeamKey],
+        score: prev[targetTeamKey].score + score,
       }
     }));
     setCurrentTeamIndex(prev => prev >= numOfTeams - 1 ? 0 : prev + 1);

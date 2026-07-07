@@ -54,7 +54,7 @@ function GamePage() {
   return (
     <main className={styles.gamePage}>
       <GameHeader teamData={teamData} setTeamData={setTeamData} setEditName={setEditName} numOfTeams={numOfTeams} numOfQuizzes={numOfQuizzes} />
-      <QuizGrid quizzes={quizzes} numOfGrid={numOfQuizzes} numOfTeams={numOfTeams} clickedCard={clickedCard} editName={editName} />
+      <QuizGrid teamData={teamData} quizzes={quizzes} numOfGrid={numOfQuizzes} numOfTeams={numOfTeams} clickedCard={clickedCard} editName={editName} />
       <EditNameOverlay isOpen={editName} onClose={closeEditNameOverlay} teamData={teamData} setTeamData={setTeamData} />
     </main> 
   )

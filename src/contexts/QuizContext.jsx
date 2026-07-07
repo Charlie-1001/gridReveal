@@ -12,6 +12,7 @@ export function QuizProvider({children}) {
   const [otherTeamIndex, setOtherTeamIndex] = useState(null);
   const [teamChanges, setTeamChanges] = useState(false);
   const [cardType, setCardType] = useState('');
+  const [funCardType, setFunCardType] = useState('');
   const [currentTeamIndex, setCurrentTeamIndex] = useState(0);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export function QuizProvider({children}) {
       currentTeamIndex, setCurrentTeamIndex,
       otherTeamIndex, setOtherTeamIndex,
       cardType, setCardType,
+      funCardType, setFunCardType
     }}>
       {children}
     </QuizContext.Provider>

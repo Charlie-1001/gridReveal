@@ -81,14 +81,15 @@ export function QuizOverlay({isOpen, onClose, data}) {
   )
 }
 
-export function FunCardOverlay({isOpen, onClose, data, numOfTeams}) {
+export function FunCardOverlay({teamData, isOpen, onClose, data, numOfTeams}) {
   if (!isOpen) return null;
 
   const {id, funType, valueType, name, value, imageUrl} = data;
-  const {setScore, setTeamChanges, setClickedCard, currentTeamIndex, setCardType,setOtherTeamIndex} = useContext(QuizContext);
+  const {setScore, setTeamChanges, setClickedCard, currentTeamIndex, setCardType, setFunCardType, setOtherTeamIndex} = useContext(QuizContext);
   const teamIndices = Array.from({length: numOfTeams}, (_, i) => i);
   const otherTeamIndex = teamIndices.filter(index => index !== currentTeamIndex);
   const otherTeam = otherTeamIndex[Math.floor(Math.random() * otherTeamIndex.length)];
+  const targetTeamIndex = funType === 'otherTeam' && numOfTeams > 1 ? otherTeam : currentTeamIndex;
 
   const audioRefs = useRef({
     correct: new Audio(correctSound),
@@ -104,7 +105,7 @@ export function FunCardOverlay({isOpen, onClose, data, numOfTeams}) {
   }
 
   useEffect(() => {
-    setOtherTeamIndex(otherTeam);
+    numOfTeams > 1 && setOtherTeamIndex(otherTeam);
   }, [otherTeam, setOtherTeamIndex]);
 
   return (
@@ -114,18 +115,20 @@ export function FunCardOverlay({isOpen, onClose, data, numOfTeams}) {
         <div className={styles.upperPart}>
           {imageUrl && <img className={styles.quizImg} src={imageUrl} alt='fun image' />}
           <h1>
-            {funType === 'thisTeam' ? name : `Team ${otherTeam + 1} ${name}`};
+            {funType === 'otherTeam' && numOfTeams > 1 ? `Team ${otherTeam + 1} ${name}` : name}
           </h1>
         </div>
         <hr className={styles.xDivLine} />
         <div className={styles.lowerPart}>
           <button className={styles.checkBtn} onClick={() => {
-            setCardType(funType === 'thisTeam' ? 'thisTeam' : 'otherTeam');
-            setScore(valueType === 'double' ? value * 2 : value);
+            const currentScore = teamData[`team${targetTeamIndex}`]?.score || 0;
+            setCardType(funType === 'otherTeam' && numOfTeams > 1 ? 'otherTeam' : 'thisTeam');
+            setFunCardType(valueType);
+            setScore(valueType === 'double' ? (currentScore * 2 - currentScore) : value);
             setTeamChanges(perv => !perv);
             setClickedCard(prev => [...prev, id]);
             playSound(valueType === 'win' || valueType === 'double' ? 'correct' : 'incorrect');
-            onClose()
+            onClose();
           }}>OK</button>
         </div>
       </div>

@@ -6,7 +6,7 @@ import winPointImg from '../assets/images/win-points.png';
 import losePointImg from '../assets/images/lose-points.png';
 import doublePointImg from '../assets/images/double-points.png';
 
-function QuizGrid({quizzes, numOfGrid, numOfTeams, clickedCard, editName}) {
+function QuizGrid({teamData,quizzes, numOfGrid, numOfTeams, clickedCard, editName}) {
   const funCards = [
     // this team wins or loses points
     {id: 'fun1', type: 'fun', funType: 'thisTeam', valueType: 'win', name: 'Win 30 Points!', value: 30, imageUrl: winPointImg},
@@ -19,7 +19,7 @@ function QuizGrid({quizzes, numOfGrid, numOfTeams, clickedCard, editName}) {
     {id: 'fun7', type: 'fun', funType: 'otherTeam', valueType: 'win', name: `wins 50 Points!`, value: 50, imageUrl: winPointImg},
     {id: 'fun8', type: 'fun', funType: 'otherTeam', valueType: 'lose', name: `loses 50 Points!`, value: -50, imageUrl: losePointImg},
     // double points
-    {id: 'fun9', type: 'fun', funType: 'thisTeam', valueType: 'double', name: 'Double Points!', value: 0, imageUrl: doublePointImg},
+    {id: 'fun9', type: 'fun', funType: 'thisTeam', valueType: 'double', name: 'Double Points!', imageUrl: doublePointImg},
   ];
 
   const gridMap = {
@@ -34,7 +34,7 @@ function QuizGrid({quizzes, numOfGrid, numOfTeams, clickedCard, editName}) {
 
   useEffect(() => {
     const shuffledFunCards = [...funCards].sort(() => Math.random() - 0.5);
-    const selectedFunCards = shuffledFunCards.slice(0, numOfTeams > 1 ? funCardMap[numOfGrid] : 4); // only includes the first four fun cards for solo play
+    const selectedFunCards = shuffledFunCards.slice(0, funCardMap[numOfGrid]);
     const shuffledQuizzes = [...quizzes].sort(() => Math.random() - 0.5);
     const selectedQuizzes = shuffledQuizzes.slice(0, numOfGrid - selectedFunCards.length);
     const shuffledCards = [...selectedFunCards, ...selectedQuizzes].sort(() => Math.random() - 0.5);
@@ -61,7 +61,7 @@ function QuizGrid({quizzes, numOfGrid, numOfTeams, clickedCard, editName}) {
         }
       </div>
       {cardType === 'quiz' && <QuizOverlay isOpen={Boolean(activeQuiz)} onClose={() => setActiveQuiz(null)} data={activeQuiz}/>}
-      {cardType === 'fun' && <FunCardOverlay isOpen={Boolean(activeQuiz)} onClose={() => setActiveQuiz(null)} data={activeQuiz} numOfTeams={numOfTeams}/>}
+      {cardType === 'fun' && <FunCardOverlay teamData={teamData} isOpen={Boolean(activeQuiz)} onClose={() => setActiveQuiz(null)} data={activeQuiz} numOfTeams={numOfTeams}/>}
     </>
   )
 }
