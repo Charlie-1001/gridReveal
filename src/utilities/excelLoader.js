@@ -1,7 +1,7 @@
 import * as XLSX from "xlsx";
 
 async function LoadExcel() {
-  const response = await fetch(import.meta.env.BASE_URL + "/gameData/quiz-data.xlsx");
+  const response = await fetch(import.meta.env.BASE_URL + "gameData/quiz-data.xlsx");
   const arrayBuffer = await response.arrayBuffer();
   const workbook = XLSX.read(arrayBuffer, {
     type: "array",
