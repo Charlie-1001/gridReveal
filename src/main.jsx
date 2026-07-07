@@ -6,7 +6,7 @@ import { QuizProvider } from './contexts/QuizContext';
 
 createRoot(document.getElementById('root')).render(
   <QuizProvider>
-    <BrowserRouter>
+    <BrowserRouter basename='/eduplayground/gridReveal/'>
       <App />
     </BrowserRouter>
   </QuizProvider>
