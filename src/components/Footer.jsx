@@ -9,9 +9,9 @@ function Footer() {
       <div>
         <h3>Image Usage Notice</h3>
         <p>
-          Some images used in educational activities may belong to their respective copyright owners.
+          "Some images used in educational activities may belong to their respective copyright owners.
           They are used for educational purposes only. We respect intellectual property rights and will
-          remove or replace any content upon a valid copyright request.
+          remove or replace any content upon a valid copyright request."
         </p>
       </div>
 

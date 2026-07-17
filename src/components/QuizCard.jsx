@@ -4,7 +4,7 @@ function QuizCard({imageUrl, title, description, grade, subject, totalQs, totalP
   return (
     <div className={`${styles.quizCard} drop-shadow`} onClick={onSelect}>
       <div className={styles.coverImg}>
-        <img src={imageUrl || null} alt={`${title} thumbnail`} />
+        <img src={imageUrl || null} loading='lazy' alt={`${title} thumbnail`} />
       </div>
       <div className={styles.cardText}>
         <h1>{title}</h1>

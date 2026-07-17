@@ -25,7 +25,7 @@ function PreviewLayout() {
   return (
     <div className={styles.layoutContainer}>
       <section className={styles.leftSection}>
-        <img src={game.coverImage} alt={`${game.title} thumbnail`} />
+        <img src={game.coverImage} loading='lazy' alt={`${game.title} thumbnail`} />
         <h1>{game.title}</h1>
         <p>{game.description}</p>
         <hr className={styles.xDivLine} />
