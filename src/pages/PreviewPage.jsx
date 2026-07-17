@@ -41,7 +41,7 @@ function PreviewLayout() {
         <h1>Preview Answers</h1>
         <div className={styles.btnContainer}>
           <label className={`${styles.ansToggleBtn} ${showAnswer ? styles.activeRadio : ''}`} ><input type='radio' name='toggleAnswer' value={true} checked={showAnswer} onChange={(e) => {setShowAnswer(true)}}/>Show</label>
-          <label className={`${styles.ansToggleBtn} ${!showAnswer ? styles.activeRadio : ''}`} ><input type='radio' name='toggleAnswer' value={false} checked={!showAnswer} onChange={(e) => {setShowAnswer(false)}}/>False</label>
+          <label className={`${styles.ansToggleBtn} ${!showAnswer ? styles.activeRadio : ''}`} ><input type='radio' name='toggleAnswer' value={false} checked={!showAnswer} onChange={(e) => {setShowAnswer(false)}}/>Hide</label>
         </div>
 
         <div className={styles.quizSetting}>

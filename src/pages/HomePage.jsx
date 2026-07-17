@@ -1,26 +1,31 @@
 import styles from './HomePage.module.css';
 import Header from '../components/Header';
 import QuizCard from '../components/QuizCard';
+import Footer from '../components/Footer';
 import {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QuizContext } from '../contexts/QuizContext';
 
 function SearchBar({searchText, setSearchText, selectedGrade, setSelectedGrade, selectedSubject, setSelectedSubject, grades, subjects}) {
+  const sortedGrades = grades.sort((a, b) => {
+    if (a === "KG") return -1;
+    if (b === "KG") return 1;
+    return a - b;
+  })
+
   return (
     <div className={`${styles.searchBar} drop-shadow`}>
       {/* grade selection */}
       <select className={styles.gradeSelect} name="grade" id="grade" value={selectedGrade} onChange={data => setSelectedGrade(data.target.value)} >
-        <option value="">Grade</option>
         <option value="all">All Grades</option>
         {
-          grades.map(grade => (
-            <option key={grade} value={grade}>{`Grade-${grade}`}</option>
+          sortedGrades.map(grade => (
+            <option key={grade} value={grade}>{grade === "KG" ? `KG` : `Grade-${grade}`}</option>
           ))
         }
       </select>
       {/* Subjects selection */}
       <select className={styles.subjectSelect} name="subject" id="subject" value={selectedSubject} onChange={data => setSelectedSubject(data.target.value)} >
-        <option value="">Subject</option>
         <option value="all">All Subjects</option>
         {
           subjects.map(subject => (
@@ -48,8 +53,8 @@ function QuizCards({searchText, selectedGrade, selectedSubject, gameData}) {
   const filteredSearch = gameData.filter(quiz => {
     const topicSelection = searchKeywords === '' || quiz.title?.toLowerCase().includes(searchKeywords) ||
       quiz.description?.toLowerCase().includes(searchKeywords);
-    const gradeSelection = selectedGrade === '' || selectedGrade === 'all' || quiz.grade == selectedGrade;
-    const subjectSelection = selectedSubject === '' || selectedSubject === 'all' || quiz.subject?.toLowerCase() == selectedSubject.toLowerCase();
+    const gradeSelection = selectedGrade === 'all' || quiz.grade == selectedGrade;
+    const subjectSelection = selectedSubject === 'all' || quiz.subject?.toLowerCase() == selectedSubject.toLowerCase();
 
     return topicSelection && gradeSelection && subjectSelection;
   })
@@ -76,8 +81,8 @@ function QuizCards({searchText, selectedGrade, selectedSubject, gameData}) {
 function HomePage() {
   const {gameData} = useContext(QuizContext);
   const [searchText, setSearchText] = useState('');
-  const [selectedGrade, setSelectedGrade] = useState('');
-  const [selectedSubject, setSelectedSubject] = useState('');
+  const [selectedGrade, setSelectedGrade] = useState('all');
+  const [selectedSubject, setSelectedSubject] = useState('all');
   const grades = [...new Set(gameData.map(quiz => quiz.grade))];
   const subjects = [...new Set(gameData.map(quiz => quiz.subject))];
 
@@ -96,6 +101,7 @@ function HomePage() {
         selectedSubject={selectedSubject}
         gameData={gameData}
       />
+      <Footer />
     </main>
   )
 }
